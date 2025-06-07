@@ -21,8 +21,19 @@ const contactService = {
         toast.error(response?.message || 'Failed to fetch contacts');
         return [];
       }
-
-      return response.data || [];
+// Map API response to UI format
+      const contacts = response.data || [];
+      return contacts.map(contact => ({
+        ...contact,
+        id: contact.Id || contact.id,
+        name: contact.Name || contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        company: contact.company,
+        position: contact.position,
+        lastContact: contact.last_contact,
+        tags: contact.tags ? (typeof contact.tags === 'string' ? contact.tags.split(',') : contact.tags) : []
+      }));
     } catch (error) {
       console.error('Error fetching contacts:', error);
       toast.error('Failed to load contacts');
@@ -49,8 +60,19 @@ const contactService = {
         toast.error(response?.message || 'Contact not found');
         return null;
       }
-
-      return response.data;
+// Map API response to UI format
+      const contact = response.data;
+      return {
+        ...contact,
+        id: contact.Id || contact.id,
+        name: contact.Name || contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        company: contact.company,
+        position: contact.position,
+        lastContact: contact.last_contact,
+        tags: contact.tags ? (typeof contact.tags === 'string' ? contact.tags.split(',') : contact.tags) : []
+      };
     } catch (error) {
       console.error('Error fetching contact:', error);
       toast.error('Failed to load contact');
@@ -98,9 +120,21 @@ const contactService = {
           });
         }
         
-        if (successfulRecords.length > 0) {
+if (successfulRecords.length > 0) {
           toast.success('Contact created successfully!');
-          return successfulRecords[0].data;
+          // Map API response to UI format
+          const contact = successfulRecords[0].data;
+          return {
+            ...contact,
+            id: contact.Id || contact.id,
+            name: contact.Name || contact.name,
+            email: contact.email,
+            phone: contact.phone,
+            company: contact.company,
+            position: contact.position,
+            lastContact: contact.last_contact,
+            tags: contact.tags ? (typeof contact.tags === 'string' ? contact.tags.split(',') : contact.tags) : []
+          };
         }
       }
       
@@ -153,9 +187,21 @@ const contactService = {
           });
         }
         
-        if (successfulUpdates.length > 0) {
+if (successfulUpdates.length > 0) {
           toast.success('Contact updated successfully!');
-          return successfulUpdates[0].data;
+          // Map API response to UI format
+          const contact = successfulUpdates[0].data;
+          return {
+            ...contact,
+            id: contact.Id || contact.id,
+            name: contact.Name || contact.name,
+            email: contact.email,
+            phone: contact.phone,
+            company: contact.company,
+            position: contact.position,
+            lastContact: contact.last_contact,
+            tags: contact.tags ? (typeof contact.tags === 'string' ? contact.tags.split(',') : contact.tags) : []
+          };
         }
       }
       

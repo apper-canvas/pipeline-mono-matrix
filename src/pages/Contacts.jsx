@@ -42,23 +42,24 @@ const Contacts = () => {
 
   const handleAddContact = async (e) => {
     e.preventDefault()
-    
-    try {
+try {
       const contact = await contactService.create(newContact)
-      setContacts([...contacts, contact])
-      setNewContact({ name: '', email: '', phone: '', company: '', position: '', tags: [] })
-      setShowAddModal(false)
-      toast.success('Contact added successfully!')
+      if (contact) {
+        setContacts([...contacts, contact])
+        setNewContact({ name: '', email: '', phone: '', company: '', position: '', tags: [] })
+        setShowAddModal(false)
+      }
     } catch (err) {
       toast.error('Failed to add contact')
     }
   }
 
   const handleDeleteContact = async (id) => {
-    try {
-      await contactService.delete(id)
-      setContacts(contacts.filter(c => c.id !== id))
-      toast.success('Contact deleted successfully!')
+try {
+      const success = await contactService.delete(id)
+      if (success) {
+        setContacts(contacts.filter(c => c.id !== id))
+      }
     } catch (err) {
       toast.error('Failed to delete contact')
     }

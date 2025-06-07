@@ -108,7 +108,7 @@ const MultiStepForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Create contact first
+// Create contact first
       const contact = await contactService.create({
         name: formData.contactName,
         email: formData.contactEmail,
@@ -118,6 +118,9 @@ const MultiStepForm = () => {
         tags: ['New Lead']
       });
 
+      if (!contact) {
+        throw new Error('Failed to create contact');
+      }
       // Create deal with contact reference
       const deal = await dealService.create({
         title: formData.dealTitle,
