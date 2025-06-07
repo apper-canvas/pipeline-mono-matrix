@@ -7,16 +7,25 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
+colors: {
+        // Semantic color tokens for consistent theming
+        border: '#e2e8f0',
+        background: '#ffffff',
+        foreground: '#0f172a',
+        muted: '#f1f5f9',
+        'muted-foreground': '#64748b',
+        
         primary: {
           DEFAULT: '#4F46E5',
           light: '#6366F1',
-          dark: '#3730A3'
+          dark: '#3730A3',
+          foreground: '#ffffff'
         },
         secondary: {
           DEFAULT: '#7C3AED',
           light: '#8B5CF6',
-          dark: '#5B21B6'
+          dark: '#5B21B6',
+          foreground: '#ffffff'
         },
         accent: '#10B981',
         surface: {

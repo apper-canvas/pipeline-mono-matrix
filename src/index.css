@@ -5,10 +5,10 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-surface-200;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-surface-900;
   }
 }
 
