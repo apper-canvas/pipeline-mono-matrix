@@ -92,7 +92,7 @@ const activityService = {
         const failedRecords = response.results.filter(result => !result.success);
         
         if (failedRecords.length > 0) {
-          console.error(`Failed to create ${failedRecords.length} records:`, failedRecords);
+          console.error(`Failed to create ${failedRecords.length} records:${JSON.stringify(failedRecords)`);
           failedRecords.forEach(record => {
             if (record.message) toast.error(record.message);
           });
