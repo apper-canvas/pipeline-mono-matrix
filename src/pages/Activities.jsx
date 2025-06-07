@@ -104,18 +104,17 @@ const Activities = () => {
           <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
         </div>
 
-        {/* Filter skeleton */}
+{/* Filter skeleton */}
         <div className="flex gap-2 overflow-x-auto">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="h-10 bg-gray-200 dark:bg-gray-700 rounded-lg w-24"></div>
+            <div key={`activity-filter-skeleton-${i}`} className="h-10 bg-gray-200 dark:bg-gray-700 rounded-lg w-24"></div>
           ))}
         </div>
-
         {/* Timeline skeleton */}
-        <div className="space-y-4">
+<div className="space-y-4">
           {[...Array(5)].map((_, i) => (
             <motion.div
-              key={i}
+              key={`activity-timeline-skeleton-${i}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
@@ -404,10 +403,10 @@ const Activities = () => {
                       value={newActivity.contactId}
                       onChange={(e) => setNewActivity({...newActivity, contactId: e.target.value})}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    >
+>
                       <option value="">Select Contact (Optional)</option>
                       {contacts.map(contact => (
-                        <option key={contact.id} value={contact.id}>
+                        <option key={`activity-contact-${contact.id}`} value={contact.id}>
                           {contact.name} - {contact.company}
                         </option>
                       ))}
@@ -419,10 +418,10 @@ const Activities = () => {
                       value={newActivity.dealId}
                       onChange={(e) => setNewActivity({...newActivity, dealId: e.target.value})}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    >
+>
                       <option value="">Select Deal (Optional)</option>
                       {deals.map(deal => (
-                        <option key={deal.id} value={deal.id}>
+                        <option key={`activity-deal-${deal.id}`} value={deal.id}>
                           {deal.title}
                         </option>
                       ))}

@@ -110,7 +110,7 @@ const filteredContacts = contacts.filter(contact =>
                   <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
                 </div>
               </div>
-</motion.div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -196,11 +196,11 @@ const ContactCard = ({ contact, index, onDelete }) => (
       </div>
     </div>
 
-    {contact?.tags && Array.isArray(contact.tags) && contact.tags.length > 0 && (
+{contact?.tags && Array.isArray(contact.tags) && contact.tags.length > 0 && (
       <div className="flex flex-wrap gap-1 mb-4">
         {contact.tags.map((tag, i) => (
           <span
-            key={`tag-${i}-${tag}`}
+            key={`contact-${contact.id}-tag-${i}-${tag}`}
             className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
           >
             {tag ?? ''}
@@ -208,7 +208,6 @@ const ContactCard = ({ contact, index, onDelete }) => (
         ))}
       </div>
     )}
-
     <div className="flex gap-2">
       <motion.button
         whileHover={{ scale: 1.05 }}

@@ -137,14 +137,14 @@ const Deals = () => {
         </div>
 
         {/* Pipeline skeleton */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-card">
+            <div key={`deal-pipeline-skeleton-${i}`} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-card">
               <div className="animate-pulse">
                 <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
                 <div className="space-y-3">
                   {[...Array(2)].map((_, j) => (
-                    <div key={j} className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+                    <div key={`deal-card-skeleton-${i}-${j}`} className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
                   ))}
                 </div>
               </div>
@@ -290,14 +290,14 @@ const Deals = () => {
         transition={{ delay: 0.1 }}
         className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-card"
       >
-        <div className="flex items-center gap-2 mb-3">
+<div className="flex items-center gap-2 mb-3">
           <ApperIcon name="BarChart3" size={20} className="text-primary" />
           <h2 className="font-semibold text-gray-900 dark:text-white">Pipeline Overview</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {stagesWithCounts.map((stage, index) => (
             <motion.div
-              key={stage.id}
+              key={`pipeline-overview-${stage.id}`}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
@@ -411,10 +411,10 @@ const Deals = () => {
                       value={newDeal.contactId}
                       onChange={(e) => setNewDeal({...newDeal, contactId: e.target.value})}
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    >
+>
                       <option value="">Select Contact</option>
                       {contacts.map(contact => (
-                        <option key={contact.id} value={contact.id}>
+                        <option key={`deal-contact-${contact.id}`} value={contact.id}>
                           {contact.name} - {contact.company}
                         </option>
                       ))}
