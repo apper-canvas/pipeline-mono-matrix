@@ -64,10 +64,10 @@ const Contacts = () => {
     }
   }
 
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    contact.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    contact.email.toLowerCase().includes(searchTerm.toLowerCase())
+const filteredContacts = contacts.filter(contact =>
+    (contact?.name ?? '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (contact?.company ?? '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (contact?.email ?? '').toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   if (loading) {
@@ -154,17 +154,17 @@ const Contacts = () => {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+<div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
             <span className="text-white font-medium text-lg">
-              {contact.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+              {(contact?.name ?? 'Unknown').split(' ').map(n => n?.[0] ?? '').join('').slice(0, 2)}
             </span>
           </div>
-          <div>
+<div>
             <h3 className="font-semibold text-gray-900 dark:text-white">
-              {contact.name}
+              {contact?.name ?? 'Unknown Contact'}
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {contact.position} at {contact.company}
+              {contact?.position ?? 'No position'} at {contact?.company ?? 'No company'}
             </p>
           </div>
         </div>
@@ -181,29 +181,29 @@ const Contacts = () => {
         </div>
       </div>
 
-      <div className="space-y-2 mb-4">
+<div className="space-y-2 mb-4">
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <ApperIcon name="Mail" size={14} />
-          <span className="truncate">{contact.email}</span>
+          <span className="truncate">{contact?.email ?? 'No email'}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <ApperIcon name="Phone" size={14} />
-          <span>{contact.phone}</span>
+          <span>{contact?.phone ?? 'No phone'}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <ApperIcon name="Clock" size={14} />
-          <span>Last contact: {new Date(contact.lastContact).toLocaleDateString()}</span>
+          <span>Last contact: {contact?.lastContact ? new Date(contact.lastContact).toLocaleDateString() : 'Never'}</span>
         </div>
       </div>
 
-      {contact.tags && contact.tags.length > 0 && (
+{contact?.tags && Array.isArray(contact.tags) && contact.tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-4">
           {contact.tags.map((tag, i) => (
             <span
               key={i}
               className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
             >
-              {tag}
+              {tag ?? ''}
             </span>
           ))}
         </div>
