@@ -87,12 +87,11 @@ const filteredContacts = contacts.filter(contact =>
 
         {/* Search skeleton */}
         <div className="h-12 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
-
-        {/* Grid skeleton */}
+{/* Grid skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
             <motion.div
-              key={i}
+              key={`skeleton-${i}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
@@ -111,7 +110,7 @@ const filteredContacts = contacts.filter(contact =>
                   <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
                 </div>
               </div>
-            </motion.div>
+</motion.div>
           ))}
         </div>
       </div>
@@ -142,93 +141,94 @@ const filteredContacts = contacts.filter(contact =>
         </motion.div>
       </div>
     )
-  }
+}
 
-  const ContactCard = ({ contact, index }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-card hover:shadow-soft transition-all duration-200 group"
-    >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-<div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-            <span className="text-white font-medium text-lg">
-              {(contact?.name ?? 'Unknown').split(' ').map(n => n?.[0] ?? '').join('').slice(0, 2)}
-            </span>
-          </div>
-<div>
-            <h3 className="font-semibold text-gray-900 dark:text-white">
-              {contact?.name ?? 'Unknown Contact'}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {contact?.position ?? 'No position'} at {contact?.company ?? 'No company'}
-            </p>
-          </div>
+// ContactCard component moved outside for better performance
+const ContactCard = ({ contact, index, onDelete }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: index * 0.1 }}
+    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-card hover:shadow-soft transition-all duration-200 group"
+  >
+    <div className="flex items-start justify-between mb-4">
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+          <span className="text-white font-medium text-lg">
+            {(contact?.name ?? 'Unknown').split(' ').map(n => n?.[0] ?? '').join('').slice(0, 2)}
+          </span>
         </div>
-        
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => handleDeleteContact(contact.id)}
-            className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+        <div>
+          <h3 className="font-semibold text-gray-900 dark:text-white">
+            {contact?.name ?? 'Unknown Contact'}
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {contact?.position ?? 'No position'} at {contact?.company ?? 'No company'}
+          </p>
+        </div>
+      </div>
+      
+      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => onDelete(contact.id)}
+          className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+        >
+          <ApperIcon name="Trash2" size={16} />
+        </motion.button>
+      </div>
+    </div>
+
+    <div className="space-y-2 mb-4">
+      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+        <ApperIcon name="Mail" size={14} />
+        <span className="truncate">{contact?.email ?? 'No email'}</span>
+      </div>
+      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+        <ApperIcon name="Phone" size={14} />
+        <span>{contact?.phone ?? 'No phone'}</span>
+      </div>
+      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+        <ApperIcon name="Clock" size={14} />
+        <span>Last contact: {contact?.lastContact ? new Date(contact.lastContact).toLocaleDateString() : 'Never'}</span>
+      </div>
+    </div>
+
+    {contact?.tags && Array.isArray(contact.tags) && contact.tags.length > 0 && (
+      <div className="flex flex-wrap gap-1 mb-4">
+        {contact.tags.map((tag, i) => (
+          <span
+            key={`tag-${i}-${tag}`}
+            className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
           >
-            <ApperIcon name="Trash2" size={16} />
-          </motion.button>
-        </div>
+            {tag ?? ''}
+          </span>
+        ))}
       </div>
+    )}
 
-<div className="space-y-2 mb-4">
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <ApperIcon name="Mail" size={14} />
-          <span className="truncate">{contact?.email ?? 'No email'}</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <ApperIcon name="Phone" size={14} />
-          <span>{contact?.phone ?? 'No phone'}</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <ApperIcon name="Clock" size={14} />
-          <span>Last contact: {contact?.lastContact ? new Date(contact.lastContact).toLocaleDateString() : 'Never'}</span>
-        </div>
-      </div>
-
-{contact?.tags && Array.isArray(contact.tags) && contact.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1 mb-4">
-          {contact.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
-            >
-              {tag ?? ''}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <div className="flex gap-2">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-        >
-          <ApperIcon name="Phone" size={14} className="inline mr-1" />
-          Call
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex-1 bg-gradient-to-r from-primary to-secondary text-white px-3 py-2 rounded-lg text-sm font-medium"
-        >
-          <ApperIcon name="Mail" size={14} className="inline mr-1" />
-          Email
-        </motion.button>
-      </div>
-    </motion.div>
-  )
+    <div className="flex gap-2">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+      >
+        <ApperIcon name="Phone" size={14} className="inline mr-1" />
+        Call
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="flex-1 bg-gradient-to-r from-primary to-secondary text-white px-3 py-2 rounded-lg text-sm font-medium"
+      >
+        <ApperIcon name="Mail" size={14} className="inline mr-1" />
+        Email
+      </motion.button>
+    </div>
+  </motion.div>
+)
 
   return (
     <div className="p-6 space-y-6">
@@ -341,8 +341,13 @@ const filteredContacts = contacts.filter(contact =>
             ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
             : 'grid-cols-1'
         }`}>
-          {filteredContacts.map((contact, index) => (
-            <ContactCard key={contact.id} contact={contact} index={index} />
+{filteredContacts.map((contact, index) => (
+            <ContactCard 
+              key={contact.id} 
+              contact={contact} 
+              index={index} 
+              onDelete={handleDeleteContact}
+            />
           ))}
         </div>
       )}
