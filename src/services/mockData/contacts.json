@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@techcorp.com",
+    "phone": "+1 (555) 123-4567",
+    "company": "TechCorp Solutions",
+    "position": "VP of Engineering",
+    "lastContact": "2024-01-15",
+    "createdAt": "2024-01-10",
+    "tags": ["Enterprise", "Decision Maker"]
+  },
+  {
+    "id": "2",
+    "name": "Michael Chen",
+    "email": "m.chen@innovatedesign.com",
+    "phone": "+1 (555) 234-5678",
+    "company": "Innovate Design Studio",
+    "position": "Creative Director",
+    "lastContact": "2024-01-12",
+    "createdAt": "2024-01-08",
+    "tags": ["Creative", "Small Business"]
+  },
+  {
+    "id": "3",
+    "name": "Emily Rodriguez",
+    "email": "emily.r@globalfinance.com",
+    "phone": "+1 (555) 345-6789",
+    "company": "Global Finance Group",
+    "position": "Operations Manager",
+    "lastContact": "2024-01-18",
+    "createdAt": "2024-01-05",
+    "tags": ["Finance", "Enterprise", "Qualified Lead"]
+  },
+  {
+    "id": "4",
+    "name": "David Park",
+    "email": "dpark@startupventures.com",
+    "phone": "+1 (555) 456-7890",
+    "company": "Startup Ventures Inc",
+    "position": "CEO",
+    "lastContact": "2024-01-14",
+    "createdAt": "2024-01-12",
+    "tags": ["Startup", "CEO", "High Priority"]
+  },
+  {
+    "id": "5",
+    "name": "Lisa Thompson",
+    "email": "lisa.thompson@healthtech.com",
+    "phone": "+1 (555) 567-8901",
+    "company": "HealthTech Innovations",
+    "position": "Product Manager",
+    "lastContact": "2024-01-16",
+    "createdAt": "2024-01-07",
+    "tags": ["Healthcare", "Product", "Mid-Market"]
+  }
+]

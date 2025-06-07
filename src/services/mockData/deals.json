@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "TechCorp Software Implementation",
+    "value": 75000,
+    "stage": "Proposal",
+    "probability": 70,
+    "expectedClose": "2024-02-15",
+    "contactId": "1",
+    "assignedTo": "John Doe",
+    "notes": "Enterprise software implementation for 500+ users. Strong interest from technical team.",
+    "createdAt": "2024-01-10"
+  },
+  {
+    "id": "2",
+    "title": "Design System Consulting",
+    "value": 25000,
+    "stage": "Negotiation",
+    "probability": 85,
+    "expectedClose": "2024-01-30",
+    "contactId": "2",
+    "assignedTo": "Sarah Wilson",
+    "notes": "Creative consulting for design system overhaul. Budget approved, finalizing timeline.",
+    "createdAt": "2024-01-08"
+  },
+  {
+    "id": "3",
+    "title": "Financial Analytics Platform",
+    "value": 120000,
+    "stage": "Qualified",
+    "probability": 45,
+    "expectedClose": "2024-03-20",
+    "contactId": "3",
+    "assignedTo": "Mike Johnson",
+    "notes": "Large analytics platform deployment. Multiple stakeholders involved.",
+    "createdAt": "2024-01-05"
+  },
+  {
+    "id": "4",
+    "title": "Startup MVP Development",
+    "value": 45000,
+    "stage": "Lead",
+    "probability": 25,
+    "expectedClose": "2024-02-28",
+    "contactId": "4",
+    "assignedTo": "John Doe",
+    "notes": "MVP development for new fintech startup. Early stage discussions.",
+    "createdAt": "2024-01-12"
+  },
+  {
+    "id": "5",
+    "title": "Healthcare Compliance Tool",
+    "value": 95000,
+    "stage": "Closed Won",
+    "probability": 100,
+    "expectedClose": "2024-01-20",
+    "contactId": "5",
+    "assignedTo": "Sarah Wilson",
+    "notes": "Compliance automation tool for healthcare industry. Successfully closed!",
+    "createdAt": "2024-01-07"
+  }
+]

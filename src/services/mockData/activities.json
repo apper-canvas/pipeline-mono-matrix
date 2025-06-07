@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "type": "call",
+    "contactId": "1",
+    "dealId": "1",
+    "description": "Discovery call to discuss technical requirements and implementation timeline",
+    "date": "2024-01-15",
+    "duration": 45
+  },
+  {
+    "id": "2",
+    "type": "email",
+    "contactId": "2",
+    "dealId": "2",
+    "description": "Sent design system proposal with pricing breakdown and project timeline",
+    "date": "2024-01-14",
+    "duration": 0
+  },
+  {
+    "id": "3",
+    "type": "meeting",
+    "contactId": "3",
+    "dealId": "3",
+    "description": "Product demo meeting with stakeholders from finance and IT departments",
+    "date": "2024-01-18",
+    "duration": 60
+  },
+  {
+    "id": "4",
+    "type": "call",
+    "contactId": "4",
+    "dealId": "4",
+    "description": "Initial consultation call to understand startup goals and technical needs",
+    "date": "2024-01-12",
+    "duration": 30
+  },
+  {
+    "id": "5",
+    "type": "email",
+    "contactId": "5",
+    "dealId": "5",
+    "description": "Contract signed and project kickoff scheduled for next week",
+    "date": "2024-01-20",
+    "duration": 0
+  },
+  {
+    "id": "6",
+    "type": "note",
+    "contactId": "1",
+    "dealId": "",
+    "description": "Follow-up needed on security requirements and compliance standards",
+    "date": "2024-01-16",
+    "duration": 0
+  },
+  {
+    "id": "7",
+    "type": "meeting",
+    "contactId": "2",
+    "dealId": "2",
+    "description": "Creative review session with design team to finalize brand guidelines",
+    "date": "2024-01-17",
+    "duration": 90
+  }
+]
